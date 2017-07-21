@@ -17,6 +17,10 @@ export function Cart( { checkout, history, productsInCart } ) {
 		/>
 	) );
 	const cartTotal = productsInCart.reduce( ( total, { price } ) => total + price, 0 );
+	function checkOutAndRedirect(){
+		checkout()
+		history.push('/thank-you')
+	}
 	return (
 		<div className="cart">
 			<h1>Cart</h1>
@@ -30,7 +34,7 @@ export function Cart( { checkout, history, productsInCart } ) {
 							<div className="cart__total">
 								${ cartTotal }
 							</div>
-							<button className="cart__checkout">Checkout</button>
+							<button className="cart__checkout" onClick={checkOutAndRedirect}>Checkout</button>
 						</main>
 			}
 		</div>
